@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Health Dashboard</title>
+    <link rel="stylesheet" href="disease.css">
+</head>
+
+<body class="health-app-theme">
+    <header class="navbar">
+        <button class="menu-btn">Menu</button>
+        <div class="city-info">
+            <h1 class="city-name">Delhi</h1>
+            <button class="change-city-btn" onclick="toggleDropdown()">Change City</button>
+            <div class="dropdown-content" id="cityDropdown">
+                <a href="#">Mumbai</a>
+                <a href="#">Hyderabad</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="city-details">
+        <p>Population: 18.98 million</p>
+        <p>Region: India</p>
+        <p>City Type: Metro City</p>
+        <a href="https://delhi.gov.in/" target="_blank" class="city-website">Delhi Government Website</a>
+    </section>
+
+    <div class="spacer"></div>
+
+    <h2 class="highlight">Diseases in Your City</h2>
+    <script>
+        // Include the updated showTab function here
+        document.addEventListener("DOMContentLoaded", function() {
+            showTab('dengue'); // Show the dengue tab by default
+        });
+    </script>
+
+    <div class="disease-container">
+        <div class="disease-box" id="dengue">
+            <button class="disease-btn" onclick="showTab('dengue')">Dengue</button>
+            <div class="tab-content" id="dengue-tab">
+                <h3>Dengue</h3>
+                <p>Spreads through mosquitoes...</p>
+                <!-- Additional data and graphs here -->
+            </div>
+        </div>
+        <!-- Repeat the above structure for other disease tabs -->
+        <div class="disease-box" id="respiratory">
+            <button class="disease-btn" onclick="showTab('respiratory')">Respiratory Diseases</button>
+            <div class="tab-content" id="respiratory-tab">
+                <h3>Respiratory Diseases</h3>
+                <p>Includes asthma, COPD...</p>
+                <!-- Additional data and graphs here -->
+            </div>
+        </div>
+        <div class="disease-box" id="cancer">
+            <button class="disease-btn" onclick="showTab('cancer')">Cancer</button>
+            <div class="tab-content" id="cancer-tab">
+                <h3>Cancer</h3>
+                <p>Various types of cancer...</p>
+                <!-- Additional data and graphs here -->
+            </div>
+        </div>
+        <div class="disease-box" id="diabetes">
+            <button class="disease-btn" onclick="showTab('diabetes')">Diabetes</button>
+            <div class="tab-content" id="diabetes-tab">
+                <h3>Diabetes</h3>
+                <p>Type 1 and Type 2 diabetes...</p>
+                <!-- Additional data and graphs here -->
+            </div>
+        </div>
+        <div class="disease-box" id="hiv">
+            <button class="disease-btn" onclick="showTab('hiv')">AIDS/HIV</button>
+            <div class="tab-content" id="hiv-tab">
+                <h3>AIDS/HIV</h3>
+                <p>Transmitted through blood, sex...</p>
+                <!-- Additional data and graphs here -->
+            </div>
+        </div>
+        <div class="disease-box" id="malaria">
+            <button class="disease-btn" onclick="showTab('malaria')">Malaria</button>
+            <div class="tab-content" id="malaria-tab">
+                <h3>Malaria</h3>
+                <p>Caused by Plasmodium parasites...</p>
+                <!-- Additional data and graphs here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+       function showTab(tabName) {
+    // Hide all tab content
+    var tabs = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = "none";
+    }
+
+    // Remove the active class from all buttons
+    var buttons = document.getElementsByClassName("disease-btn");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+    }
+
+    // Show the selected tab content and add the active class to the button
+    var selectedTab = document.getElementById(tabName + "-tab");
+    selectedTab.style.display = "block";
+    var selectedButton = document.getElementById(tabName);
+    selectedButton.classList.add('active');
+}
+document.addEventListener("DOMContentLoaded", function() {
+    showTab('dengue'); // Show the dengue tab by default
+});
+    </script>
+</body>
+</html>

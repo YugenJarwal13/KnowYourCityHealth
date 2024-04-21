@@ -1,0 +1,16 @@
+.cities {
+    padding: 80px 0;
+}
+
+.city-map {
+    background-color: #1a1a1a; /* Dark background color for city map */
+    color: #fff; /* White text color */
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
+}
+
+.city-map p {
+    font-size: 1.2rem;
+}

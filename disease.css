@@ -1,0 +1,201 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Health App Theme */
+.health-app-theme {
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    background-color: #3fc380; /* Green color for the navbar */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.city-container {
+    display: flex;
+    align-items: center;
+}
+
+.city-info {
+    margin-left: auto;
+}
+
+.city-name {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.change-city-btn {
+    background-color: #3fc380;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.city-details {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.city-details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    flex-basis: 45%;
+}
+
+.city-details .city-website {
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    text-decoration: none;
+    color: #3fc380;
+}
+
+.spacer {
+    height: 20px;
+}
+
+.highlight {
+    color: #3fc380;
+    margin: 20px 20px 10px;
+}
+
+.disease-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.disease-box {
+    width: calc(50% - 20px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, opacity 0.3s;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+}
+
+.disease-btn {
+    width: 100%;
+    background-color: #3fc380;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.disease-btn.active {
+    background-color: #32CD32; /* Change color for active tab */
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.disease-box:hover {
+    transform: scale(1.05);
+}
+disease-btn.active {
+    background-color: #32CD32; /* Change color for active tab */
+}
+
+/* Ensure that the tab content is displayed with the correct styles */
+.tab-content {
+    display: none;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* Add a border for better separation */
+    margin-top: -1px; /* Overlap the border of the disease-box for a seamless look */
+}
+.disease-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.disease-box:hover::before {
+    opacity: 0.5;
+}
+
+.disease-box h3,
+.disease-box p {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.disease-box:hover h3,
+.disease-box:hover p {
+    opacity: 0;
+}

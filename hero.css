@@ -1,0 +1,49 @@
+.hero {
+    position: relative;
+    overflow: hidden; /* Ensure background image doesn't overflow */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://as1.ftcdn.net/v2/jpg/04/67/45/16/1000_F_467451660_QCW09V7mBpsfEMojUi1Fdj7lo1qpE17W.jpg"); /* Background image path */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Place background behind content */
+}
+
+.hero .hero-content {
+    z-index: 1; /* Ensure content is above background */
+    text-align: center;
+    color: #cef85c; /* Text color for hero content */
+    padding: 100px 0; /* Adjust as needed */
+}
+
+.hero .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+/* Button styles */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffd700; /* Yellow button background color */
+    color: #1a1a1a; /* Dark text color for the button */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #1a1a1a; /* Dark background color on hover */
+    color: #ffd700; /* Yellow text color on hover */
+}

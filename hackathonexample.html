@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnowYourCityHealth</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-submit {
+            background-color: #28a745;
+        }
+
+        .form-submit:hover {
+            background-color: #218838;
+        }
+
+        .page-transition {
+            animation: slideInRight 0.5s ease-in-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        #dataVisualization {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        #dataVisualization h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        #lineChart {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container page-transition">
+        <header>
+            <h1>KnowYourCityHealth</h1>
+            <img src="health-related-image.jpg" alt="Health Related Image">
+        </header>
+
+        <!-- Login Page -->
+        <div id="loginPage" class="form-container">
+            <input type="text" class="form-input" placeholder="Username">
+            <input type="password" class="form-input" placeholder="Password">
+            <button id="loginBtn" class="form-submit">Login</button>
+            <p>Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
+        </div>
+
+        <!-- Sign Up Page -->
+        <div id="signupPage" class="form-container" style="display: none;">
+            <input type="text" class="form-input" placeholder="Username">
+            <input type="email" class="form-input" placeholder="Email">
+            <input type="password" class="form-input" placeholder="Password">
+            <button id="signupBtn" class="form-submit">Sign Up</button>
+            <p>Already have an account? <a href="#" id="loginLink">Login</a></p>
+        </div>
+
+        <!-- City Selection Page -->
+        <div id="citySelectionPage" class="form-container" style="display: none;">
+            <h2>Select City</h2>
+            <button id="newDelhiBtn">NEW DELHI</button>
+            <button id="kolkataBtn">KOLKATA</button>
+            <button id="mumbaiBtn">MUMBAI</button>
+        </div>
+
+        <!-- Statistics Page -->
+        <div id="statisticsPage" class="form-container" style="display: none;">
+            <h2 id="cityName"></h2>
+            <div id="statistics"></div>
+            <div id="options">
+                <button id="newsBtn">News</button>
+                <button id="diseaseBtn">Disease</button>
+                <button id="accidentsBtn">Accidents</button>
+            </div>
+            <div id="dataVisualization">
+                <h3>Random Data or Plots</h3>
+                <div id="lineChart"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Functions to show/hide pages
+        function showPage(pageId) {
+            document.querySelectorAll('.form-container').forEach(function(element) {
+                element.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'flex';
+        }
+
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            showPage('citySelectionPage');
+        });
+
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            showPage('citySelectionPage');
+        });
+
+        document.getElementById('newDelhiBtn').addEventListener('click', function() {
+            showPage('statisticsPage');
+            document.getElementById('cityName').innerText = 'NEW DELHI';
+            // Code to fetch and display statistics for New Delhi
+            // Example of random data for line chart
+            generateRandomLineChart();
+        });
+
+        document.getElementById('kolkataBtn').addEventListener('click', function() {
+            showPage('statisticsPage');
+            document.getElementById('cityName').innerText = 'KOLKATA';
+            // Code to fetch and display statistics for Kolkata
+            // Example of random data for line chart
+            generateRandomLineChart();
+        });
+
+        document.getElementById('mumbaiBtn').addEventListener('click', function() {
+            showPage('statisticsPage');
+            document.getElementById('cityName').innerText = 'MUMBAI';
+            // Code to fetch and display statistics for Mumbai
+            // Example of random data for line chart
+            generateRandomLineChart();
+        });
+
+        document.getElementById('newsBtn').addEventListener('click', function() {
+            // Code to fetch and display health news for the selected city
+            document.getElementById('dataVisualization').innerHTML = "<h3>Latest Health News</h3><p>News content here...</p>";
+        });
+
+        document.getElementById('diseaseBtn').addEventListener('click', function() {
+            // Code to fetch and display disease options for the selected city
+            document.getElementById('dataVisualization').innerHTML = "<h3>Disease Information</h3><p>Disease options here...</p>";
+        });
+
+        document.getElementById('accidentsBtn').addEventListener('click', function() {
+            // Code to fetch and display accident statistics for the selected city
+            document.getElementById('dataVisualization').innerHTML = "<h3>Accident Statistics</h3><p>Accident data here...</p>";
+        });
+
+        // Show login page by default
+        showPage('loginPage');
+
+        // Toggle between login and sign up pages
+        document.getElementById('signupLink').addEventListener('click', function() {
+            showPage('signupPage');
+        });
+
+        document.getElementById('loginLink').addEventListener('click', function() {
+            showPage('loginPage');
+        });
+
+        // Function to generate random line chart (example)
+        function generateRandomLineChart() {
+            // Generate random data points
+            let dataPoints = [];
+            for (let i = 0; i < 10; i++) {
+                dataPoints.push({
+                    x: i + 1,
+                    y: Math.floor(Math.random() * 100)
+                });
+            }
+
+            // Plot the chart using Chart.js (example)
+            var ctx = document.getElementById('lineChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dataPoints.map(point => point.x),
+                    datasets: [{
+                        label: 'Random Data',
+                        data: dataPoints.map(point => point.y),
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
